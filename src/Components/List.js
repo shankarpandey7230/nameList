@@ -1,6 +1,6 @@
 import React from 'react';
 
-const List = ({ list, handleOnSubmit }) => {
+const List = ({ list }) => {
   return (
     <div className="list">
       <ul>

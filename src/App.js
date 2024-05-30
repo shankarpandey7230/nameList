@@ -6,15 +6,21 @@ import Form from './Components/Form';
 
 function App() {
   const [list, setList] = useState([]);
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    // console.log(e);
-    // setList([...list, name]);
-    // setInput({ name: '' });
-    // r.current.value = '';
+  // const handleOnSubmit = (e) => {
+  //   e.preventDefault();
+  //   // console.log(e);
+  //   // setList([...list, name]);
+  //   // setInput({ name: '' });
+  //
+  // };
+
+  const addUser = (name) => {
+    // console.log(name);
+    setList([...list, name]);
+
+    // console.log(list);
   };
   // const [input, setInput] = useState({ name: '' });
-  const r = useRef();
 
   // console.log(list);
   return (
@@ -23,7 +29,7 @@ function App() {
       style={{ height: '100vh' }}
     >
       <div className="userList shadow-lg p-3 mb-5 bg-body rounded p-4">
-        <Form />
+        <Form addUser={addUser} />
 
         <List list={list} />
       </div>
