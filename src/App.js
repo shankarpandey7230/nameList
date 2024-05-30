@@ -1,9 +1,11 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function App() {
   const [name, setName] = useState('');
   const [list, setList] = useState([]);
+  // const [input, setInput] = useState({ name: '' });
+  const r = useRef();
 
   const handleOnChange = (e) => {
     // console.log(e.target.value);
@@ -16,8 +18,10 @@ function App() {
     e.preventDefault();
     // console.log(e);
     setList([...list, name]);
+    // setInput({ name: '' });
+    r.current.value = '';
   };
-  console.log(list);
+  // console.log(list);
   return (
     <div
       className="wrapper d-flex justify-content-center align-items-center fs-2 "
@@ -27,7 +31,7 @@ function App() {
         <div className="display">{name}</div>
         <div className="form">
           <form action="" onSubmit={handleOnSubmit}>
-            <input type="text" onChange={handleOnChange} />
+            <input type="text" name="name" ref={r} onChange={handleOnChange} />
             <button>Add User</button>
           </form>
           <hr />
@@ -35,7 +39,7 @@ function App() {
         <div className="list">
           <ul>
             {list.map((item, i) => {
-              return <li>{item}</li>;
+              return <li key={i}>{item}</li>;
             })}
           </ul>
         </div>
